@@ -6,7 +6,7 @@
 
         <!-- UTILIZAR V-SHOW PARA OCULTAR PELICULA MIENTRAS LA DATA ESTÉ VACÍA -->
         <div class="container-movie">
-          <div class="container-poster">
+          <div class="container-poster" >
             <img :src="info.data.Poster" />
           </div>
 
@@ -73,15 +73,18 @@ export default {
 
 <style scoped lang="scss">
 
+
+
 .container{
-  /*  display: flex;
+    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start; */
+    align-items: center;
+    max-width: 90%;
+    background-color: white;
 
     h1{
-        color: darkblue;
-        font-size: 43px;
+        color: #010101;
+        font-size: 26px;
     }
 
     img{
@@ -96,9 +99,9 @@ export default {
     }
 
     button{
-        background-color: darkblue;
+        background-color: #010101;
         color: white;
-        font-size: 14px;
+        font-size: 16px;
         border: none;
         padding: 10px 15px;
         margin-top: 25px;
@@ -106,18 +109,22 @@ export default {
 
     .container-movie{
       display: flex;
-      margin-top: 100px;
+      flex-direction: column;
+      margin-top: 10px;
+      max-width: 95%;
+     
 
       .container-poster{
+         max-width: 500px;
 
         img{
-          height: 700px;
+          height: 500px;
           width: auto;
         }
       }
 
       .container-info{
-        background-color: beige;
+        background-color: #313131;
         padding: 20px 15px 30px 30px;
         display: flex;
         flex-direction: column;
@@ -125,12 +132,89 @@ export default {
         justify-content: flex-end;
         max-width: 500px;
 
-        p{
-          font-size: 16px;
+        h1{
           text-align: left;
+          color: #f1f1f1;
+        }
+
+        p{
+          font-size: 14px;
+          text-align: left;
+          color: #f1f1f1;
         }
       }
     }
+}
+
+@media only screen and (min-width: 700px)  {
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+
+    h1{
+        color: #010101;
+        font-size: 43px;
+    }
+
+    img{
+        height: 600px;
+        width: auto; 
+    }
+    p{
+        font-size: 16px;
+        font-weight: 200;
+        margin: 10px 0;
+        color: #000;
+    }
+
+    button{
+        background-color: #010101;
+        color: white;
+        font-size: 18px;
+        border: none;
+        padding: 10px 15px;
+        margin-top: 25px;
+    }
+
+    .container-movie{
+      display: flex;
+      flex-direction: row;
+      margin-top: 100px;
+
+      .container-poster{
+    
+        img{
+          height: 700px;
+          width: auto;
+        }
+      }
+
+      .container-info{
+        background-color: #313131;
+        padding: 20px 15px 30px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        max-width: 500px;
+
+        h1{
+          text-align: left;
+          color: #f1f1f1;
+        }
+
+        p{
+          font-size: 16px;
+          text-align: left;
+          color: #f1f1f1;
+        }
+      }
+    }
+}
 }
 </style>
 

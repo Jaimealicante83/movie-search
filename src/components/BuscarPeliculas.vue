@@ -5,13 +5,13 @@
         <button v-on:click="getMovie">Buscar película</button>
 
         <!-- UTILIZAR V-SHOW PARA OCULTAR PELICULA MIENTRAS LA DATA ESTÉ VACÍA -->
-        <div class="container-movie">
+        <div id="ficha" class="container-movie" v-if="!isHidden">
           <div class="container-poster" >
             <img :src="info.data.Poster" />
           </div>
 
           <div class="container-info">
-            <h1>{{ info.data.Title }}</h1>
+            <h1>{{ info.data.Title }}<span>({{ info.data.Year }})</span><span id="rating"> <b-icon-star-fill variant="warning"></b-icon-star-fill> {{ info.data.imdbRating }} </span></h1>
             <p>Genero: {{ info.data.Genre }}</p>
             <p>Año: {{ info.data.Year }}</p>
             <p>País: {{ info.data.Country }}</p>
@@ -19,6 +19,8 @@
             <p>Dirección: {{ info.data.Director }}</p>
             <p>Actores: {{ info.data.Actors }}</p>
             <p>Argumento:{{ info.data.Plot}}</p>
+
+            <button><a :href="`https://www.imdb.com/title/${info.data.imdbID}`">Ver en Imdb </a></button>
           </div>
         </div>
 
@@ -46,7 +48,9 @@ export default {
      data() {
       return {
         text: '',
-        info: ''
+        info: '',
+        ficha: '',
+        isHidden: true
       }
     },
 
@@ -57,9 +61,9 @@ export default {
     //  .get('http://www.omdbapi.com/?t=joker&apikey=c70674e5')
       .get('http://www.omdbapi.com/?t=' + this.text + '&apikey=c70674e5')
       .then(response => (this.info = response))
+      this.isHidden = false;
      
      }
-    
   },
 
   mounted () {
@@ -135,13 +139,30 @@ export default {
         h1{
           text-align: left;
           color: #f1f1f1;
+
+          span{
+            font-size: 25px;
+            margin-left: 15px;
+          }
+
+          #rating{
+            font-size: 20px;
+            text-align: left;
+            color: #f1f1f1;
+          }
         }
 
-        p{
-          font-size: 14px;
-          text-align: left;
-          color: #f1f1f1;
+        button{
+          background-color: yellow;
+          color: #000;
+
+          a{
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+          }
         }
+
       }
     }
 }
